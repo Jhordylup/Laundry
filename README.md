@@ -1,5 +1,3 @@
-# Laundry
-
 # 💧 Laundry Management System
 
 # 📌 Deskripsi
