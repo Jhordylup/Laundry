@@ -1,14 +1,15 @@
 # Laundry
 
-💧 Laundry Management System
-📌 Deskripsi
+# 💧 Laundry Management System
+
+# 📌 Deskripsi
 
 
 Laundry Management System adalah aplikasi berbasis web untuk mengelola proses usaha laundry agar lebih praktis, cepat, dan efisien.
 Dengan sistem ini, pemilik laundry, kasir, dan pelanggan bisa mengakses informasi secara lebih terstruktur dibanding cara manual.
 
 
-Tujuan utama:
+# Tujuan utama:
 
 Mempermudah pencatatan transaksi.
 
@@ -20,7 +21,7 @@ Menyediakan laporan transaksi yang rapi.
 
 
 
-🛠️ Teknologi yang Digunakan:
+# 🛠️ Teknologi yang Digunakan:
 
 HTML → struktur halaman.
 
@@ -35,7 +36,7 @@ MySQL (via Laragon/XAMPP) → database penyimpanan.
 FontAwesome → ikon modern biar tampilan lebih menarik.
 
 
-👥 Role / Hak Akses:
+# 👥 Role / Hak Akses:
 
 Admin → mengelola pengguna, layanan, dan laporan.
 
@@ -44,7 +45,7 @@ Kasir → input transaksi & update status laundry.
 Pelanggan → melihat status laundry (opsional, sesuai fitur).
 
 
-⚙️ Fitur Utama:
+# ⚙️ Fitur Utama:
 
 ✅ Login sesuai role pengguna (admin, kasir).
 
@@ -61,7 +62,7 @@ Pelanggan → melihat status laundry (opsional, sesuai fitur).
 ✅ Laporan transaksi.
 
 
-🔄 Alur Sistem:
+# 🔄 Alur Sistem:
 
 Kasir/Admin login ke sistem.
 
@@ -74,11 +75,11 @@ Status laundry diupdate sesuai progres.
 Admin dapat melihat laporan transaksi per hari/bulan.
 
 
-📂 Struktur Database (sementara kosong)
+# 📂 Struktur Database (sementara kosong)
 
 📌 Database masih dalam tahap perencanaan. Struktur tabel akan ditambahkan setelah finalisasi.
 
-📊 Manfaat Sistem:
+# 📊 Manfaat Sistem:
 
 
 Mempercepat transaksi laundry.
