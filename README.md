@@ -1,153 +1,111 @@
-Laundry Management System
-
-Laundry Management System adalah aplikasi web sederhana untuk membantu pengelolaan usaha laundry. Dibanding cara manual, sistem ini bikin semuanya lebih terstruktur, cepat, dan rapi—mulai dari mencatat transaksi, memantau status pesanan, sampai bikin laporan keuangan.
-
-Kenapa Dibuat?
-
-Biar pencatatan transaksi nggak ribet lagi
-
-Data pelanggan dan layanan tersimpan rapi
-
-Status laundry bisa dipantau secara real-time
-
-Laporan transaksi bisa keluar otomatis dan teratur
-
-Teknologi yang Dipakai
-
-HTML → struktur halaman
-
-CSS + Bootstrap → bikin tampilan lebih rapih
-
-JavaScript → interaksi biar lebih dinamis
-
-PHP → otak dari aplikasi (backend & koneksi DB)
-
-MySQL → tempat semua data disimpan (pakai XAMPP/Laragon)
-
-FontAwesome → biar ada ikon modern di UI
-
-Hak Akses Pengguna
-
-Admin → atur user, layanan, dan laporan
-
-Kasir → input transaksi & update status laundry
-
-Pelanggan → bisa cek status laundry (opsional)
-
-Fitur Utama
-
-Login berdasarkan role pengguna
-
-Manajemen data layanan (jenis, harga, satuan, dll)
-
-Input & update data pelanggan
-
-Pencatatan transaksi laundry
-
-Update status laundry (pending, proses, selesai, diambil)
-
-Pembayaran + cetak struk
-
-Laporan transaksi harian/bulanan
-
-Alur Kerja Singkat
-
-Admin atau kasir login ke sistem
-
-Kasir input data pelanggan + pilih layanan
-
-Sistem otomatis hitung total biaya
-
-Status laundry bisa diupdate sesuai progres
-
-Admin bisa tarik laporan transaksi kapan aja
-
-Struktur Database
-
-Database bernama laundry_ukk_tugas ini punya 5 tabel utama:
-
-1. laundry_login11
-
-Data login user (admin, kasir, pelanggan).
-
-id → Primary key
-
-username → Nama user untuk login
-
-password → Password (terenkripsi)
-
-role → admin/kasir/user
-
-2. layanan11
-
-Data layanan yang ditawarkan.
-
-id → Primary key
-
-nama_layanan → Nama layanan (contoh: Cuci Kering)
-
-kategori → Jenis kategori layanan
-
-harga → Harga layanan
-
-durasi → Estimasi waktu pengerjaan
-
-deskripsi → Info tambahan layanan
-
-icon → Nama/icon untuk UI
-
-3. orders11
-
-Data pesanan laundry.
-
-id → Primary key
-
-user_id → Relasi ke laundry_login11
-
-total_harga → Total harga pesanan
-
-status → pending / proses / selesai
-
-tanggal_pesan → Waktu pesanan dibuat
-
-tanggal_selesai → Waktu selesai laundry
-
-4. order_items11
-
-Detail layanan dalam satu pesanan.
-
-id → Primary key
-
-order_id → Relasi ke orders11
-
-layanan_id → Relasi ke layanan11
-
-jumlah → Jumlah layanan yang dipilih
-
-harga → Harga per layanan
-
-5. orders_progress11
-
-Catatan progres dari tiap pesanan.
-
-id → Primary key
-
-order_id → Relasi ke orders11
-
-status → menunggu / pencucian / pengeringan / siap
-
-updated_by → ID user yang update status
-
-waktu_update → Waktu update dilakukan
-
-keterangan → Catatan tambahan
-
-Relasi Antar Tabel
-
-laundry_login11 → orders11 (user_id)
-
-orders11 → order_items11 (order_id)
-
-layanan11 → order_items11 (layanan_id)
-
-orders11 → orders_progress11 (order_id)
+# 🧺 Laundry Management System  
+
+[![Made with PHP](https://img.shields.io/badge/Made%20with-PHP-777BB4?logo=php&logoColor=white)](https://www.php.net/)  
+[![Database MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)  
+[![Frontend](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-orange)](#)  
+[![Status](https://img.shields.io/badge/Project-Active-success)](#)  
+
+**Laundry Management System** adalah aplikasi web sederhana untuk mengelola usaha laundry biar lebih cepat, praktis, dan rapi.  
+Dibanding cara manual, sistem ini bikin transaksi, pelanggan, layanan, dan laporan lebih terstruktur.  
+
+---
+
+## 🚀 Fitur Utama
+- 🔑 Login berdasarkan role pengguna (Admin, Kasir, User)  
+- 📋 Manajemen layanan laundry (jenis, harga, durasi, dll)  
+- 👥 Input & update data pelanggan  
+- 💰 Pencatatan transaksi + perhitungan biaya otomatis  
+- 🔄 Update status laundry (pending, proses, selesai, diambil)  
+- 🧾 Pembayaran + cetak struk  
+- 📊 Laporan transaksi harian/bulanan  
+
+---
+
+## 🛠️ Teknologi
+| Bagian        | Teknologi yang Dipakai |
+|---------------|-------------------------|
+| Frontend      | HTML, CSS, Bootstrap, JavaScript |
+| Backend       | PHP |
+| Database      | MySQL (XAMPP/Laragon) |
+| UI/UX Support | FontAwesome |
+
+---
+
+## 👤 Hak Akses Pengguna
+- **Admin** → kelola user, layanan, laporan  
+- **Kasir** → input transaksi, update status  
+- **Pelanggan** → cek status laundry (opsional)  
+
+---
+
+## 📌 Alur Kerja Singkat
+1. Admin/Kasir login ke sistem  
+2. Kasir input data pelanggan + pilih layanan  
+3. Sistem otomatis hitung total biaya  
+4. Status laundry diupdate sesuai progres  
+5. Admin bisa tarik laporan transaksi kapan saja  
+
+---
+
+## 🗄️ Struktur Database  
+
+### Tabel yang digunakan:
+- **laundry_login11** → data akun pengguna  
+- **layanan11** → data layanan laundry  
+- **orders11** → data pesanan pelanggan  
+- **order_items11** → detail layanan dalam pesanan  
+- **orders_progress11** → catatan progres setiap pesanan  
+
+### Relasi Tabel
+- `laundry_login11` → `orders11` (user_id)  
+- `orders11` → `order_items11` (order_id)  
+- `layanan11` → `order_items11` (layanan_id)  
+- `orders11` → `orders_progress11` (order_id)  
+
+---
+
+## 📊 DB Diagram (dbdiagram.io Syntax)
+
+```sql
+Table laundry_login11 {
+  id int [pk, increment]
+  username varchar(50)
+  password varchar(255)
+  role enum('admin','kasir','user')
+}
+
+Table layanan11 {
+  id int [pk, increment]
+  nama_layanan varchar(255)
+  kategori varchar(255)
+  harga int
+  durasi int
+  deskripsi varchar(255)
+  icon varchar(255)
+}
+
+Table orders11 {
+  id int [pk, increment]
+  user_id int [ref: > laundry_login11.id]
+  total_harga int
+  status enum('pending','proses','selesai')
+  tanggal_pesan datetime
+  tanggal_selesai datetime
+}
+
+Table order_items11 {
+  id int [pk, increment]
+  order_id int [ref: > orders11.id]
+  layanan_id int [ref: > layanan11.id]
+  jumlah int
+  harga int
+}
+
+Table orders_progress11 {
+  id int [pk, increment]
+  order_id int [ref: > orders11.id]
+  status enum('menunggu','pencucian','pengeringan','siap...')
+  updated_by int [ref: > laundry_login11.id]
+  waktu_update datetime
+  keterangan varchar(255)
+}
