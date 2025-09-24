@@ -1,87 +1,130 @@
-# 💧 Laundry Management System
+Laundry Management System
 
+Laundry Management System adalah aplikasi berbasis web yang dirancang untuk membantu pengelolaan usaha laundry agar lebih praktis, cepat, dan efisien. Dengan sistem ini, pemilik usaha, kasir, dan pelanggan dapat mengakses informasi secara terstruktur dibandingkan metode manual.
 
-Laundry Management System adalah aplikasi berbasis web untuk mengelola proses usaha laundry agar lebih praktis, cepat, dan efisien.
-Dengan sistem ini, pemilik laundry, kasir, dan pelanggan bisa mengakses informasi secara lebih terstruktur dibanding cara manual.
+Tujuan Utama
 
+Mempermudah pencatatan transaksi
 
-# Tujuan utama:
+Mengelola data pelanggan dan layanan
 
-Mempermudah pencatatan transaksi.
+Memantau status laundry secara real-time
 
-Mengelola data pelanggan & layanan.
+Menyediakan laporan transaksi yang rapi
 
-Memantau status laundry secara real-time.
+Teknologi yang Digunakan
 
-Menyediakan laporan transaksi yang rapi.
+HTML → struktur halaman
 
+CSS + Bootstrap (opsional) → tampilan antarmuka
 
+JavaScript → interaksi dinamis pada halaman web
 
-# Teknologi yang Digunakan:
+PHP → backend logic dan koneksi database
 
-HTML → struktur halaman.
+MySQL (via Laragon/XAMPP) → penyimpanan data
 
-CSS + Bootstrap (opsional) → styling antarmuka.
+FontAwesome → ikon agar tampilan lebih modern
 
-JavaScript → interaksi dinamis di halaman web.
+Role / Hak Akses
 
-PHP → backend logic & koneksi database.
+Admin → mengelola pengguna, layanan, dan laporan
 
-MySQL (via Laragon/XAMPP) → database penyimpanan.
+Kasir → input transaksi dan update status laundry
 
-FontAwesome → ikon modern biar tampilan lebih menarik.
+Pelanggan → melihat status laundry (opsional sesuai fitur)
 
+Fitur Utama
 
-# Role / Hak Akses:
+Login sesuai role pengguna (admin, kasir)
 
-Admin → mengelola pengguna, layanan, dan laporan.
+Input dan update data layanan (jenis laundry, harga, satuan)
 
-Kasir → input transaksi & update status laundry.
+Manajemen data pelanggan
 
-Pelanggan → melihat status laundry (opsional, sesuai fitur).
+Pencatatan transaksi laundry
 
+Update status laundry (proses, selesai, diambil)
 
-# Fitur Utama:
+Pembayaran dan cetak struk
 
-Login sesuai role pengguna (admin, kasir).
+Laporan transaksi
 
-Input & update data layanan (jenis laundry, harga, satuan).
+Alur Sistem
 
-Manajemen data pelanggan.
+Admin atau kasir login ke sistem
 
-Pencatatan transaksi laundry.
+Kasir input data pelanggan dan layanan yang dipilih
 
-Update status laundry (proses, selesai, diambil).
+Sistem menghitung total biaya
 
-Pembayaran & cetak struk.
+Status laundry diupdate sesuai progres
 
-Laporan transaksi.
+Admin dapat melihat laporan transaksi per hari atau per bulan
 
+Struktur Database
 
-# Alur Sistem:
+Database laundry_ukk_tugas terdiri dari 5 tabel utama:
 
-Kasir/Admin login ke sistem.
+1. Tabel laundry_login11
 
-Kasir input data pelanggan + layanan yang dipilih.
+Menyimpan data akun pengguna sistem.
 
-Sistem menghitung total biaya.
+Field	Tipe Data	Keterangan
+id	INT(11), AUTO_INCREMENT	Primary key
+username	VARCHAR(50)	Nama pengguna untuk login
+password	VARCHAR(255)	Password terenkripsi
+role	ENUM('admin','kasir','user')	Hak akses pengguna
+2. Tabel layanan11
 
-Status laundry diupdate sesuai progres.
+Menyimpan daftar layanan laundry.
 
-Admin dapat melihat laporan transaksi per hari/bulan.
+Field	Tipe Data	Keterangan
+id	INT(11), AUTO_INCREMENT	Primary key
+nama_layanan	VARCHAR(255)	Nama layanan
+kategori	VARCHAR(255)	Kategori layanan
+harga	INT(11)	Harga layanan
+durasi	INT(11)	Estimasi durasi
+deskripsi	VARCHAR(255)	Deskripsi singkat
+icon	VARCHAR(255)	Ikon tampilan UI
+3. Tabel orders11
 
+Menyimpan data pesanan laundry.
 
-# Struktur Database (sementara kosong)
+Field	Tipe Data	Keterangan
+id	INT(11), AUTO_INCREMENT	Primary key
+user_id	INT(11), INDEX	Relasi ke tabel laundry_login11
+total_harga	INT(11)	Total biaya
+status	ENUM('pending','proses','selesai')	Status pesanan
+tanggal_pesan	DATETIME	Waktu pesanan dibuat
+tanggal_selesai	DATETIME	Waktu selesai laundry
+4. Tabel order_items11
 
-Database masih dalam tahap perencanaan. Struktur tabel akan ditambahkan setelah finalisasi.
+Menyimpan detail layanan dalam setiap pesanan.
 
-# Manfaat Sistem:
+Field	Tipe Data	Keterangan
+id	INT(11), AUTO_INCREMENT	Primary key
+order_id	INT(11), INDEX	Relasi ke tabel orders11
+layanan_id	INT(11), INDEX	Relasi ke tabel layanan11
+jumlah	INT(11)	Jumlah layanan
+harga	INT(11)	Harga per layanan
+5. Tabel orders_progress11
 
+Menyimpan catatan perkembangan status laundry.
 
-Mempercepat transaksi laundry.
+Field	Tipe Data	Keterangan
+id	INT(11), AUTO_INCREMENT	Primary key
+order_id	INT(11), INDEX	Relasi ke tabel orders11
+status	ENUM('menunggu','pencucian','pengeringan','siap...')	Status proses
+updated_by	INT(11), INDEX	ID kasir/admin yang mengupdate
+waktu_update	DATETIME	Waktu update
+keterangan	VARCHAR(255)	Catatan tambahan
+Relasi Antar Tabel
 
-Mengurangi risiko salah hitung & salah catat.
+laundry_login11 → orders11 (user_id)
 
-Membuat laporan lebih rapi.
+orders11 → order_items11 (order_id)
 
-Membantu usaha laundry jadi lebih profesional.
+layanan11 → order_items11 (layanan_id)
+
+orders11 → orders_progress11 (order_id)
